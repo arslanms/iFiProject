@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Movies</ion-title>
+    <ion-buttons end>
+    	<button icon-only ion-button (click)="addMovie()">
+        <ion-icon name="add"></ion-icon>
+    	</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<!-- <h1 center>Movies Out Right Now</h1> -->
+
+  <ion-list>
+  	<ion-item *ngFor="let movie of movies | async">
+
+<ion-card>
+
+  <ion-item>
+    <ion-avatar item-left>
+      <!-- <img src="img/marty-avatar.png"> -->
+      <img src={{movie.image}}>
+    </ion-avatar>
+    <h2>{{movie.title}}</h2>
+    <p>{{movie.date}}</p>
+  </ion-item>
+
+  <!-- <img src="img/advance-card-bttf.png"> -->
+  <!-- <img src={{movie.image}}> -->
+
+  <ion-card-content>
+    <p>{{movie.description}}</p>
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col>
+      <button ion-button icon-left clear small color="secondary" (click)="upvoteMovie(movie)">
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{movie.likes}} Likes</div>
+      </button>
+    </ion-col>
+    <ion-col>
+      <button ion-button icon-left clear small color="danger" (click)="downvoteMovie(movie)">
+        <ion-icon name="thumbs-down"></ion-icon>
+        <div>{{movie.dislikes}} Dislikes</div>
+      </button>
+    </ion-col>
+    <ion-col center text-center>
+      <ion-note>
+        <button ion-button (click)="openLink()">
+          Click here now to buy
+        </button>
+      </ion-note>
+    </ion-col>
+  </ion-row>
+
+</ion-card>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
